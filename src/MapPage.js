@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import MapView, { Polyline, PROVIDER_DEFAULT } from 'react-native-maps';
+import MapView, { Polyline, PROVIDER_DEFAULT, Marker } from 'react-native-maps';
 import React, { useState, useEffect } from 'react';
 import * as Location from 'expo-location';
 import { TouchableOpacity } from 'react-native';
@@ -122,6 +122,19 @@ const MapPage = props => {
                     urlTemplate={"http://a.tile.openstreetmap.org/{z}/{x}/{y}.png"}
                     shouldReplaceMapContent={true}>
                 </MapView.UrlTile>
+
+                {/* Markers */}
+                {containers.container.map(container => {
+                    if (container.lat != null && container.long != null) {
+                        return <Marker
+                            coordinate={{ latitude: container.lat, longitude: container.long }}
+                            key={container.id}
+                            title={container.id}
+                            description={container.address}>
+                        </Marker>
+                    }
+                    return <span></span>
+                })}
 
                 {/** User route */}
                 <Polyline coordinates={path} strokeWidth={5} strokeColor={'#0404bd77'}></Polyline>
