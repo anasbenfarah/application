@@ -138,7 +138,9 @@ const MapPage = props => {
                             coordinate={{ latitude: container.lat, longitude: container.long }}
                             key={container.id}
                             title={container.id}
-                            description={container.address}>
+                            description={container.address + ' ' + '' + container.level }
+                            
+                            >
                         </Marker>
                     }
                     return <span></span>
@@ -148,14 +150,18 @@ const MapPage = props => {
                 <Polyline coordinates={path} strokeWidth={5} strokeColor={'#0404bd77'}></Polyline>
 
             </MapView>
+            
 
             <TouchableOpacity style={styles.logoutBtn} onPress={() => { logout() }}>
                 <Text style={styles.btnTxt} >Log Out</Text>
             </TouchableOpacity>
+              
+            
             <TouchableOpacity style={styles.ClassBtn}>
             <Text style={styles.btnTxt}
-            onPress={() => { props.navigation.navigate('niveau') }}>classement</Text>
+            onPress={() => { props.navigation.navigate('Niveau') }}>classement</Text>
             </TouchableOpacity>
+            
             
         </View>
     )
