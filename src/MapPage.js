@@ -36,6 +36,8 @@ const MapPage = props => {
     const [path, setPath] = useState([]);
     const [oldLat, setOldLat] = useState(null);
     const [oldLong, setOldLong] = useState(null);
+    
+    
 
     useEffect(() => {
         (async () => {
@@ -66,6 +68,9 @@ const MapPage = props => {
             props.navigation.navigate('LoginPage');
         });
     }
+    
+    
+
 
 
     return (
@@ -74,6 +79,9 @@ const MapPage = props => {
                 style={styles.map}
                 initialRegion={initRegion}
                 showsUserLocation={true}
+                
+            
+                
 
                 onUserLocationChange={(event) => {
                     const lat = event.nativeEvent.coordinate.latitude;
@@ -144,6 +152,11 @@ const MapPage = props => {
             <TouchableOpacity style={styles.logoutBtn} onPress={() => { logout() }}>
                 <Text style={styles.btnTxt} >Log Out</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={styles.ClassBtn}>
+            <Text style={styles.btnTxt}
+            onPress={() => { props.navigation.navigate('niveau') }}>classement</Text>
+            </TouchableOpacity>
+            
         </View>
     )
 }
@@ -184,6 +197,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#008000',
         borderRadius: 26,
         padding: 10
+    },
+
+    ClassBtn:{
+        position:'relative',
+        bottom: 38,
+        left: 120,
+        zIndex: 5,
+        elevation: 5,
+        backgroundColor: '#008000',
+        borderRadius: 26,
+        padding: 10,
+        
+        
+
     },
 
     btnTxt: {
