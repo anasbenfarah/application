@@ -5,6 +5,7 @@ import * as Location from 'expo-location';
 import { TouchableOpacity } from 'react-native';
 import { getAuth, signOut } from "firebase/auth";
 import { getDatabase, push, serverTimestamp, set, ref } from "firebase/database";
+const containers = require('./null.json');
 
 
 
