@@ -157,10 +157,7 @@ const MapPage = props => {
             </TouchableOpacity>
               
             
-            <TouchableOpacity style={styles.ClassBtn}>
-            <Text style={styles.btnTxt}
-            onPress={() => { props.navigation.navigate('Niveau') }}>classement</Text>
-            </TouchableOpacity>
+           
             
             
         </View>
@@ -205,19 +202,6 @@ const styles = StyleSheet.create({
         padding: 10
     },
 
-    ClassBtn:{
-        position:'relative',
-        bottom: 38,
-        left: 120,
-        zIndex: 5,
-        elevation: 5,
-        backgroundColor: '#008000',
-        borderRadius: 26,
-        padding: 10,
-        
-        
-
-    },
 
     btnTxt: {
         fontSize: 12,
