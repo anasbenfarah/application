@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import MapView, { Polyline, PROVIDER_DEFAULT, Marker } from 'react-native-maps';
+import MapView, { Polyline, PROVIDER_DEFAULT, Marker, Callout } from 'react-native-maps';
 import React, { useState, useEffect } from 'react';
 import * as Location from 'expo-location';
 import { TouchableOpacity } from 'react-native';
@@ -147,8 +147,15 @@ const MapPage = props => {
                         return <Marker
                             coordinate={{ latitude: container.lat, longitude: container.long }}
                             key={container.id}
-                            title={container.id}
+                            title={'id: ' + container.id + ' level: ' + container.level + '%'}
                             description={container.address}>
+                            <Callout>
+                                <View style={{ width: 200 }}>
+                                    <Text> {'ID: ' + container.id} </Text>
+                                    <Text> {'Level: ' + container.level + '%'} </Text>
+                                    <Text> {container.address} </Text>
+                                </View>
+                            </Callout>
                         </Marker>
                     }
                     return <span></span>
@@ -158,7 +165,7 @@ const MapPage = props => {
                 <Polyline coordinates={path} strokeWidth={5} strokeColor={'#0404bd77'}></Polyline>
 
                 {/* Most short route */}
-                <MapViewDirections
+                {(oldLat && oldLong) && <MapViewDirections
                     origin={{ latitude: oldLat, longitude: oldLong }}
                     destination={mostFilled[mostFilled.length - 1]}
                     apikey="AIzaSyCVP3XaNqrpjlW4BnoGyAV5WKImYGj-K94"
@@ -166,7 +173,9 @@ const MapPage = props => {
                     strokeColor="green"
                     waypoints={mostFilled}
                     optimizeWaypoints={true}
-                />
+                />}
+
+
 
             </MapView>
 
